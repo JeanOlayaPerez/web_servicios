@@ -264,16 +264,17 @@ html:not(.is-night) .service-card .desc { color: #4a5a76; }
 
 /* Proyectos: carrusel */
 .carousel { position: relative; width: min(100%, 960px); margin: 0 auto; }
-.carousel-stage { overflow: hidden; position: relative; width: 100%; }
-.carousel-track { display: flex; will-change: transform; }
-.carousel-slide { flex: 0 0 auto; width: 100%; display: flex; justify-content: center; }
-.carousel-slide .card { width: clamp(260px, 90vw, 360px); margin: 0 auto; }
-.carousel-slide .card .thumb { height: clamp(140px, 48vw, 200px); }
+.carousel-stage { position: relative; width: 100%; }
+.carousel-slide { display: flex; justify-content: center; padding: 0 clamp(16px, 6vw, 32px); }
+.carousel-slide > * { width: clamp(260px, 90vw, 360px); }
+.carousel-slide .thumb { height: clamp(140px, 48vw, 200px); }
 .carousel-btns { display: flex; justify-content: center; gap: 10px; margin-top: 16px; }
-.carousel button.nav { width: 42px; height: 42px; border-radius: 999px; border: 1px solid var(--btn-border); background: var(--btn-bg); color: var(--fg); }
+.carousel button.nav { width: 44px; height: 44px; border-radius: 999px; border: 1px solid var(--btn-border); background: var(--btn-bg); color: var(--fg); font-size: 20px; line-height: 1; }
 .carousel-dots { display: flex; justify-content: center; gap: 6px; margin-top: 10px; }
-.carousel-dots .dot { width: 8px; height: 8px; border-radius: 999px; background: rgba(255,255,255,.25); }
+.carousel-dots .dot { width: 9px; height: 9px; border-radius: 999px; background: rgba(255,255,255,.25); border: none; padding: 0; cursor: pointer; }
 .carousel-dots .dot.active { background: var(--accent); box-shadow: 0 0 8px color-mix(in oklab, var(--accent), transparent 60%); }
+.fade-in { animation: fadeIn .35s ease; }
+@keyframes fadeIn { from { opacity: 0; transform: translateY(12px);} to { opacity: 1; transform: translateY(0);} }
 
 /* Contacto: form */
 .form { display: grid; gap: 12px; width: min(720px, 100%); margin: 0 auto; text-align: left; }
