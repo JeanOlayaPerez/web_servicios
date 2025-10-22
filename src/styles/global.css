@@ -27,13 +27,18 @@ body {
   min-height: 100dvh;
   display: grid;
   place-items: center;
-  padding: 72px 20px 48px;
+  padding: 72px clamp(34px, 10vw, 120px) 48px clamp(34px, 10vw, 120px);
   scroll-snap-align: start;
   isolation: isolate;
   overflow-x: hidden;
 }
 
-.content { max-width: 920px; text-align: center; }
+.content {
+  width: min(100%, 920px);
+  max-width: 920px;
+  margin: 0 auto;
+  text-align: center;
+}
 .title { font-size: clamp(28px, 5.6vw, 44px); line-height: 1.12; margin: 0 0 8px; }
 .subtitle { color: var(--muted); margin: 0 0 20px; font-size: clamp(15px, 3.6vw, 18px); }
 .accent { color: var(--accent); text-shadow: 0 0 24px color-mix(in oklab, var(--accent), transparent 70%); }
@@ -259,20 +264,25 @@ html:not(.is-night) .service-card .desc { color: #4a5a76; }
 
 /* Proyectos: carrusel */
 .carousel { position: relative; }
-.carousel-track { display: grid; grid-auto-flow: column; grid-auto-columns: 100%; gap: 14px; overflow-x: auto; scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch; padding: 4px 2px; }
+.carousel-track {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: min(100%, 360px);
+  gap: 16px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  padding: 4px 0;
+}
 .carousel-item { scroll-snap-align: start; }
-@media (min-width: 720px) { .carousel-track { grid-auto-columns: calc((100% - 28px) / 3); } }
+@media (min-width: 960px) {
+  .carousel-track { grid-auto-columns: calc((100% - 32px) / 3); gap: 14px; }
+}
 .carousel-btns { display: flex; justify-content: center; gap: 10px; margin-top: 10px; }
 .carousel button.nav { width: 42px; height: 42px; border-radius: 999px; border: 1px solid var(--btn-border); background: var(--btn-bg); color: var(--fg); }
-@media (max-width: 720px) {
-  .carousel-track { display: flex; flex-direction: column; gap: 18px; overflow: visible; scroll-snap-type: none; }
-  .carousel-item { width: 100%; }
-  .card { width: 100%; max-width: none; flex: 1 1 auto; }
-  .carousel-btns { display: none; }
-}
 
 /* Contacto: form */
-.form { display: grid; gap: 12px; width: min(720px, 94vw); margin: 0 auto; text-align: left; }
+.form { display: grid; gap: 12px; width: min(720px, 100%); margin: 0 auto; text-align: left; }
 .field { display: grid; gap: 6px; }
 .field label { font-weight: 700; font-size: 14px; color: var(--muted); }
 .input, .textarea, .select { background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.16); color: var(--fg); padding: 12px 12px; border-radius: 10px; outline: none; }
