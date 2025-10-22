@@ -1,0 +1,41 @@
+:root {
+  --fg: #e7eefc;
+  --muted: #a8b1c7;
+  --accent: #78e3ff;
+  --btn-bg: rgba(255,255,255,0.06);
+  --btn-border: rgba(255,255,255,0.16);
+  --btn-bg-hover: rgba(255,255,255,0.12);
+
+  /* Espacio */
+  --space-1: #0b1220; /* cénit */
+  --space-2: #141d35;
+  --space-3: #1c2a4d; /* horizonte */
+
+  /* Cielo (día) */
+  --sky-1: #b9e6ff;
+  --sky-2: #7fc7ff;
+  --sky-3: #3aa0ff;
+
+  /* Montañas */
+  --mtn-top: #a4b5c6;
+  --mtn-base: #6c7d8f;
+
+  /* Bosque */
+  --forest-1: #d7f8e7;
+  --forest-2: #98e1bf;
+  --forest-3: #5bc098;
+}
+
+.is-night {
+  --fg: #dbe5ff;
+  --muted: #9aa6c4;
+  --accent: #ffce6b;
+  --btn-bg: rgba(255,255,255,0.08);
+  --btn-border: rgba(255,255,255,0.22);
+  --btn-bg-hover: rgba(255,255,255,0.16);
+
+  --space-1: #050a16;
+  --space-2: #0b1220;
+  --space-3: #121a2e;
+}
+
