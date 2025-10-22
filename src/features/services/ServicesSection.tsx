@@ -1,4 +1,5 @@
 import { services } from './data'
+import Carousel from '@components/Carousel'
 
 type Props = {
   standalone?: boolean
@@ -50,18 +51,20 @@ export default function ServicesSection({ standalone = false }: Props) {
                 <h3>{group.title}</h3>
                 <p>{group.blurb}</p>
               </div>
-              <div className="services-grid">
-                {items.map((it) => (
-                  <article key={it.title} className="service-card">
-                    <h4>{it.title}</h4>
-                    <p className="price">{it.price}</p>
-                    <p className="desc">{it.desc}</p>
-                    <div className="actions">
-                      <a className="btn cta" href="#contacto">Solicitar</a>
-                      <a className="btn ghost" href="#proyectos">Ver ejemplos</a>
-                    </div>
-                  </article>
-                ))}
+              <div className="services-carousel">
+                <Carousel>
+                  {items.map((it) => (
+                    <article key={it.title} className="service-card">
+                      <h4>{it.title}</h4>
+                      <p className="price">{it.price}</p>
+                      <p className="desc">{it.desc}</p>
+                      <div className="actions">
+                        <a className="btn cta" href="#contacto">Solicitar</a>
+                        <a className="btn ghost" href="#proyectos">Ver ejemplos</a>
+                      </div>
+                    </article>
+                  ))}
+                </Carousel>
               </div>
             </section>
           )

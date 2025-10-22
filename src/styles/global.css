@@ -225,15 +225,18 @@ body {
 .is-night .pine { border-bottom-color: #1e3a33; }
 
 /* Servicios */
-.services-grid { display: grid; gap: 16px; grid-template-columns: repeat(3, minmax(0, 1fr)); margin-top: 16px; }
-@media (max-width: 960px) { .services-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
-@media (max-width: 640px) { .services-grid { grid-template-columns: 1fr; } }
-.service-card { background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.18); border-radius: 14px; padding: 16px; backdrop-filter: blur(10px); }
 .services-group { margin-top: 34px; text-align: left; }
 .services-group:first-of-type { margin-top: 24px; }
 .group-header { margin-bottom: 14px; }
 .group-header h3 { margin: 0 0 4px; font-size: clamp(18px, 4vw, 24px); }
 .group-header p { margin: 0; color: var(--muted); font-size: clamp(14px, 3.4vw, 16px); }
+.services-carousel { margin-top: 16px; }
+.services-carousel .carousel { width: min(100%, 900px); padding: 0 clamp(20px, 8vw, 52px); }
+.services-carousel .carousel-slide { padding: 0 clamp(10px, 4vw, 22px); }
+.services-carousel .carousel-slide > * { width: clamp(230px, calc(100vw - 5cm), 320px); }
+.services-carousel .carousel button.nav { width: 40px; height: 40px; }
+.services-carousel .carousel-dots { margin-top: 8px; }
+.service-card { background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.18); border-radius: 14px; padding: 16px; backdrop-filter: blur(10px); display: flex; flex-direction: column; gap: 10px; text-align: left; }
 .service-card h4 { margin: 0 0 6px; font-size: 18px; }
 .service-card .price { font-weight: 800; color: var(--accent); margin: 0 0 8px; }
 .service-card .desc { color: var(--muted); margin: 0 0 10px; }
