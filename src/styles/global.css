@@ -263,16 +263,18 @@ html:not(.is-night) .service-card .desc { color: #4a5a76; }
 @keyframes spark { 0% { transform: translate3d(0, -20%, 0); opacity: 0; } 10% { opacity: .9; } 100% { transform: translate3d(0, 140%, 0); opacity: 0; } }
 
 /* Proyectos: carrusel */
-.carousel { position: relative; }
+.carousel { position: relative; width: 100%; }
 .carousel-track {
   display: grid;
   grid-auto-flow: column;
-  grid-auto-columns: min(100%, 360px);
+  grid-auto-columns: min(100%, 320px);
   gap: 16px;
   overflow-x: auto;
   scroll-snap-type: x mandatory;
   -webkit-overflow-scrolling: touch;
-  padding: 4px clamp(32px, 12vw, 120px);
+  padding: 4px 0;
+  scroll-padding-left: clamp(32px, 12vw, 120px);
+  scroll-padding-right: clamp(32px, 12vw, 120px);
 }
 .carousel-item { scroll-snap-align: start; }
 @media (min-width: 960px) {
