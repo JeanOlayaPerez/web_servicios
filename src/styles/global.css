@@ -263,11 +263,11 @@ html:not(.is-night) .service-card .desc { color: #4a5a76; }
 @keyframes spark { 0% { transform: translate3d(0, -20%, 0); opacity: 0; } 10% { opacity: .9; } 100% { transform: translate3d(0, 140%, 0); opacity: 0; } }
 
 /* Proyectos: carrusel */
-.carousel { position: relative; width: min(100%, 960px); margin: 0 auto; }
+.carousel { position: relative; width: min(100%, 960px); margin: 0 auto; padding: 0 clamp(20px, 9vw, 48px); box-sizing: border-box; }
 .carousel-stage { position: relative; width: 100%; }
-.carousel-slide { display: flex; justify-content: center; padding: 0 clamp(16px, 6vw, 32px); }
-.carousel-slide > * { width: clamp(260px, 90vw, 360px); }
-.carousel-slide .thumb { height: clamp(140px, 48vw, 200px); }
+.carousel-slide { display: flex; justify-content: center; padding: 0 clamp(12px, 5vw, 24px); }
+.carousel-slide > * { width: clamp(240px, calc(100vw - clamp(40px, 18vw, 96px)), 340px); }
+.carousel-slide .thumb { height: clamp(132px, 45vw, 190px); }
 .carousel-btns { display: flex; justify-content: center; gap: 10px; margin-top: 16px; }
 .carousel button.nav { width: 44px; height: 44px; border-radius: 999px; border: 1px solid var(--btn-border); background: var(--btn-bg); color: var(--fg); font-size: 20px; line-height: 1; }
 .carousel-dots { display: flex; justify-content: center; gap: 6px; margin-top: 10px; }
