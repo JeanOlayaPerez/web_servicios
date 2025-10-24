@@ -5,24 +5,32 @@ type Props = {
   standalone?: boolean
 }
 
+const badge = (token: string, label: string) => (
+  <span className={`skill-token ${token}`} aria-hidden>
+    {label}
+  </span>
+)
+
 export default function SkillsSection({ standalone = false }: Props) {
   const skillset = [
-    { icon: 'JS', label: 'JavaScript', percent: 85 },
-    { icon: 'TS', label: 'TypeScript', percent: 75 },
-    { icon: 'RE', label: 'React', percent: 70 },
-    { icon: 'ND', label: 'Node.js', percent: 72 },
-    { icon: 'FE', label: 'HTML/CSS', percent: 90 },
-    { icon: 'PY', label: 'Python', percent: 68 },
-    { icon: 'DB', label: 'SQL', percent: 65 },
-    { icon: 'GT', label: 'Git', percent: 80 }
+    { icon: badge('js', 'JS'), label: 'JavaScript', percent: 88 },
+    { icon: badge('ts', 'TS'), label: 'TypeScript', percent: 78 },
+    { icon: badge('react', 'RE'), label: 'React', percent: 82 },
+    { icon: badge('node', 'Node'), label: 'Node.js', percent: 74 },
+    { icon: badge('css', 'HTML'), label: 'HTML / CSS', percent: 92 },
+    { icon: badge('python', 'Py'), label: 'Python', percent: 70 },
+    { icon: badge('sql', 'SQL'), label: 'SQL', percent: 68 },
+    { icon: badge('git', 'Git'), label: 'Git & CI', percent: 83 },
+    { icon: badge('flutter', 'DF'), label: 'Dart / Flutter', percent: 72 }
   ]
 
   const { ref, inView } = useInView<HTMLDivElement>({ threshold: 0.35 })
   const Element = (standalone ? 'main' : 'section') as keyof JSX.IntrinsicElements
   const ariaLabel = standalone ? 'Stack tecnológico' : 'Habilidades'
+  const className = `section${standalone ? ' section-standalone skills-standalone' : ''}`
 
   return (
-    <Element id="habilidades" className="section" aria-label={ariaLabel} ref={ref as any}>
+    <Element id="habilidades" className={className} aria-label={ariaLabel} ref={ref as any}>
       <div className="bg sky-bg">
         {/* Nubes compuestas */}
         <div className="ncloud n1" aria-hidden="true" />
@@ -53,7 +61,7 @@ export default function SkillsSection({ standalone = false }: Props) {
       </div>
       <div className="content">
         <h2 className="title">Tecnologías que domino</h2>
-        <p className="subtitle">Stack moderno con foco mobile y rendimiento.</p>
+        <p className="subtitle">Stack moderno con foco mobile, multiplataforma y rendimiento.</p>
         <div className="skill-grid" role="list">
           {skillset.map((skill) => (
             <SkillMeter key={skill.label} icon={skill.icon} label={skill.label} percent={skill.percent} active={inView} />

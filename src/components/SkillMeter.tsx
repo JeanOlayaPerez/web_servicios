@@ -1,7 +1,9 @@
+import { ReactNode } from 'react'
+
 type Props = {
   label: string
   percent: number
-  icon?: string
+  icon?: ReactNode
   active?: boolean
 }
 
@@ -9,7 +11,10 @@ export default function SkillMeter({ label, percent, icon, active }: Props) {
   return (
     <div className="skill">
       <div className="skill-head">
-        <span className="skill-label">{icon ? `${icon} ` : ''}{label}</span>
+        <div className="skill-label">
+          {icon && <span className="skill-icon" aria-hidden>{icon}</span>}
+          <span>{label}</span>
+        </div>
         <span className="skill-percent">{percent}%</span>
       </div>
       <div className="skill-track" aria-hidden>
@@ -18,4 +23,3 @@ export default function SkillMeter({ label, percent, icon, active }: Props) {
     </div>
   )
 }
-

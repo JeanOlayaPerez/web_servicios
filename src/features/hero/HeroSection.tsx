@@ -64,7 +64,7 @@ export default function HeroSection() {
     return () => viewport.removeEventListener('pointermove', onMove)
   }, [])
 
-  // Estrellas fugaces periodicas
+  // Estrellas fugaces periódicas
   useEffect(() => {
     const wrap = document.getElementById('shooting')
     if (!wrap) return
