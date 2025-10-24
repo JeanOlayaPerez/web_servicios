@@ -1,6 +1,15 @@
 * { box-sizing: border-box; }
 html, body, #root { height: 100%; }
 :root { --header-offset: clamp(118px, 16vw, 164px); }
+@media (max-width: 960px) {
+  :root { --header-offset: clamp(140px, 22vw, 196px); }
+}
+@media (max-width: 720px) {
+  :root { --header-offset: clamp(168px, 30vw, 228px); }
+}
+@media (max-width: 540px) {
+  :root { --header-offset: clamp(192px, 36vw, 256px); }
+}
 body {
   margin: 0;
   font-family: 'Outfit', ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji";
@@ -35,6 +44,9 @@ body {
   isolation: isolate;
   overflow-x: hidden;
   scroll-margin-top: calc(var(--header-offset) + 16px);
+}
+.viewport > .section:first-of-type {
+  padding-top: calc(var(--header-offset) + clamp(48px, 9vw, 96px));
 }
 .section-standalone {
   min-height: auto;
