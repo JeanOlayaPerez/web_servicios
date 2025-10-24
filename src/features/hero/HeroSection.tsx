@@ -8,44 +8,38 @@ export default function HeroSection() {
   useEffect(() => {
     const el = starsRef.current
     if (!el) return
-    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches
-    const count = reduce ? 40 : 140
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+    const count = reduceMotion ? 40 : 140
     el.innerHTML = ''
     for (let i = 0; i < count; i++) {
-      const s = document.createElement('span')
+      const star = document.createElement('span')
       const size = Math.random() * 1.8 + 0.4
-      s.style.width = `${size}px`
-      s.style.height = `${size}px`
-      s.style.left = `${Math.random() * 100}%`
-      s.style.top = `${Math.random() * 100}%`
-      const d = Math.random() * 6 + 4
+      star.style.width = `${size}px`
+      star.style.height = `${size}px`
+      star.style.left = `${Math.random() * 100}%`
+      star.style.top = `${Math.random() * 100}%`
+      const duration = Math.random() * 6 + 4
       const delay = Math.random() * 4
-      s.style.animationDuration = `${d}s`
-      s.style.animationDelay = `${delay}s`
-      el.appendChild(s)
+      star.style.animationDuration = `${duration}s`
+      star.style.animationDelay = `${delay}s`
+      el.appendChild(star)
     }
   }, [])
 
-  // parallax suave por puntero
+  // Parallax suave por puntero
   const parallax = useRef({ x: 0, y: 0, tx: 0, ty: 0, raf: 0 as number | 0 })
   useEffect(() => {
-    const viewport = document.querySelector('main.viewport') as HTMLElement
-    const onMove = (e: PointerEvent) => {
-      const rect = viewport.getBoundingClientRect()
-      const x = (e.clientX - rect.left) / rect.width
-      const y = (e.clientY - rect.top) / rect.height
-      parallax.current.tx = (x - 0.5) * 2
-      parallax.current.ty = (y - 0.5) * 2
-      if (!parallax.current.raf) parallax.current.raf = requestAnimationFrame(tick)
-    }
+    const viewport = document.querySelector('main.viewport') as HTMLElement | null
+    if (!viewport) return
+
     const tick = () => {
       const p = parallax.current
       p.x += (p.tx - p.x) * 0.08
       p.y += (p.ty - p.y) * 0.08
       const layers = document.querySelectorAll<HTMLElement>('#bienvenida [data-depth]')
-      layers.forEach(el => {
-        const depth = Number(el.dataset.depth || 8)
-        el.style.transform = `translate3d(${p.x * depth * 0.6}px, ${p.y * depth * 0.6}px, 0)`
+      layers.forEach((layer) => {
+        const depth = Number(layer.dataset.depth || 8)
+        layer.style.transform = `translate3d(${p.x * depth * 0.6}px, ${p.y * depth * 0.6}px, 0)`
       })
       if (Math.abs(p.tx - p.x) > 0.001 || Math.abs(p.ty - p.y) > 0.001) {
         parallax.current.raf = requestAnimationFrame(tick)
@@ -54,24 +48,38 @@ export default function HeroSection() {
         parallax.current.raf = 0
       }
     }
-    viewport?.addEventListener('pointermove', onMove, { passive: true })
-    return () => viewport?.removeEventListener('pointermove', onMove)
+
+    const onMove = (event: PointerEvent) => {
+      const rect = viewport.getBoundingClientRect()
+      const x = (event.clientX - rect.left) / rect.width
+      const y = (event.clientY - rect.top) / rect.height
+      parallax.current.tx = (x - 0.5) * 2
+      parallax.current.ty = (y - 0.5) * 2
+      if (!parallax.current.raf) {
+        parallax.current.raf = requestAnimationFrame(tick)
+      }
+    }
+
+    viewport.addEventListener('pointermove', onMove, { passive: true })
+    return () => viewport.removeEventListener('pointermove', onMove)
   }, [])
 
-  // Estrellas fugaces periódicas
+  // Estrellas fugaces periodicas
   useEffect(() => {
     const wrap = document.getElementById('shooting')
     if (!wrap) return
-    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches
-    if (reduce) return
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+    if (reduceMotion) return
+
     const spawn = () => {
-      const s = document.createElement('div')
-      s.className = 'shooting-star'
-      s.style.left = `${Math.random() * 20}%`
-      s.style.top = `${20 + Math.random() * 40}%`
-      wrap.appendChild(s)
-      setTimeout(() => s.remove(), 1400)
+      const streak = document.createElement('div')
+      streak.className = 'shooting-star'
+      streak.style.left = `${Math.random() * 20}%`
+      streak.style.top = `${20 + Math.random() * 40}%`
+      wrap.appendChild(streak)
+      setTimeout(() => streak.remove(), 1400)
     }
+
     const id = window.setInterval(spawn, 2200)
     return () => window.clearInterval(id)
   }, [])
@@ -110,9 +118,7 @@ export default function HeroSection() {
           Analista Programador Computacional
         </motion.p>
         <motion.div className="actions" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.6, delay: 0.2 }}>
-          <a className="btn cta" href="#habilidades">Tecnologías</a>
-          <a className="btn ghost" href="#proyectos">Ver proyectos</a>
-          <a className="btn ghost" href="#servicios">Servicios</a>
+          <a className="btn cta" href="#proyectos">Ver proyectos</a>
           <a className="btn ghost" href="#contacto">Hablemos</a>
         </motion.div>
       </div>
@@ -121,7 +127,7 @@ export default function HeroSection() {
 }
 
 function MoonSun() {
-  const { night, setNight } = useTheme()
+  const { setNight } = useTheme()
   return (
     <>
       <div className="moon" onClick={() => setNight(true)} title="Modo noche" />

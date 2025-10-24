@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 
-const SECTIONS = ['bienvenida', 'habilidades', 'proyectos', 'servicios', 'contacto'] as const
+const SECTIONS = ['bienvenida', 'proyectos', 'contacto'] as const
 
 export default function NavDots() {
   const [active, setActive] = useState<typeof SECTIONS[number]>('bienvenida')

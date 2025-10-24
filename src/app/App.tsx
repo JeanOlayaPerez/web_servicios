@@ -2,20 +2,28 @@ import ThemeToggle from '@components/ThemeToggle'
 import NavDots from '@components/NavDots'
 import { ThemeProvider } from '@app/theme'
 import HeroSection from '@features/hero/HeroSection'
-import SkillsSection from '@features/skills/SkillsSection'
 import ProjectsSection from '@features/projects/ProjectsSection'
-import ServicesSection from '@features/services/ServicesSection'
 import ContactSection from '@features/contact/ContactSection'
-import { Route, Routes } from 'react-router-dom'
+import { Link, NavLink, Route, Routes } from 'react-router-dom'
 import ProjectDetail from '@features/projects/ProjectDetail'
 import ServicesPage from '@features/services/ServicesPage'
+import SkillsPage from '@features/skills/SkillsPage'
 
 export default function App() {
   return (
     <ThemeProvider>
-      <header className="ui" role="presentation">
-        <div className="ui-controls">
-          <ThemeToggle />
+      <header className="ui" role="banner">
+        <div className="ui-bar">
+          <Link to="/" className="ui-brand" aria-label="Ir al inicio">
+            <span>Jean Dev</span>
+          </Link>
+          <nav className="ui-nav" aria-label="Navegación principal">
+            <NavLink to="/stack" className={({ isActive }) => `ui-nav-link${isActive ? ' active' : ''}`}>Stack tecnológico</NavLink>
+            <NavLink to="/servicios" className={({ isActive }) => `ui-nav-link${isActive ? ' active' : ''}`}>Servicios</NavLink>
+          </nav>
+          <div className="ui-controls">
+            <ThemeToggle />
+          </div>
         </div>
         <NavDots />
       </header>
@@ -23,13 +31,12 @@ export default function App() {
         <Route path="/" element={
           <main className="viewport" tabIndex={-1}>
             <HeroSection />
-            <SkillsSection />
             <ProjectsSection />
-            <ServicesSection />
             <ContactSection />
           </main>
         } />
         <Route path="/proyecto/:slug" element={<ProjectDetail />} />
+        <Route path="/stack" element={<SkillsPage />} />
         <Route path="/servicios" element={<ServicesPage />} />
       </Routes>
     </ThemeProvider>
