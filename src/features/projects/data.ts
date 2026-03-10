@@ -4,9 +4,18 @@ export type Project = {
   summary: string
   tags: string[]
   image?: string
+  demoUrl?: string
 }
 
 export const projects: Project[] = [
+  {
+    slug: 'proyecto-charlie',
+    title: 'Proyecto Charlie',
+    summary: 'Sitio web corporativo desplegado y publicado en Vercel.',
+    tags: ['React', 'Vite', 'Vercel'],
+    image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=1200&auto=format&fit=crop',
+    demoUrl: 'https://proyecto-charlie.vercel.app/'
+  },
   {
     slug: 'dashboard-ventas',
     title: 'Dashboard de Ventas',

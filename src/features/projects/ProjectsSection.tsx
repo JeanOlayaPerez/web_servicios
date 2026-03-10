@@ -75,9 +75,22 @@ export default function ProjectsSection({ standalone = false, heading = 'Proyect
                 <h3 className="card-title">{project.title}</h3>
                 <p className="card-text">{project.summary}</p>
                 <div className="tags">{project.tags.map((tag) => <span key={tag}>{tag}</span>)}</div>
-                <Link className="btn small" to={`/proyecto/${project.slug}`} aria-label={`Ver detalle de ${project.title}`}>
-                  Ver detalle
-                </Link>
+                <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap' }}>
+                  <Link className="btn small" to={`/proyecto/${project.slug}`} aria-label={`Ver detalle de ${project.title}`}>
+                    Ver detalle
+                  </Link>
+                  {project.demoUrl && (
+                    <a
+                      className="btn ghost small"
+                      href={project.demoUrl}
+                      target="_blank"
+                      rel="noreferrer noopener"
+                      aria-label={`Abrir demo de ${project.title}`}
+                    >
+                      Ver online
+                    </a>
+                  )}
+                </div>
               </article>
             </div>
           ))}
