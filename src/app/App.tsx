@@ -64,6 +64,26 @@ function HeaderStatus() {
   )
 }
 
+function HeaderCarousel() {
+  const items = [
+    'Landing page para empresa de logística',
+    'Sitio para floristería premium',
+    'Landing page para firma contable',
+    'Sistema para gestión operativa',
+    'Landing page para estudio de tatuaje'
+  ]
+
+  return (
+    <div className="header-carousel" aria-label="Carrusel de servicios destacados">
+      <div className="header-carousel-track">
+        {[...items, ...items].map((item, index) => (
+          <span key={`${item}-${index}`} className="header-carousel-item">{item}</span>
+        ))}
+      </div>
+    </div>
+  )
+}
+
 export default function App() {
   const navTrackRef = useRef<HTMLElement | null>(null)
   const location = useLocation()
@@ -96,6 +116,7 @@ export default function App() {
             <span>Jean Dev</span>
           </Link>
           <HeaderStatus />
+          <HeaderCarousel />
           <div className="ui-nav-shell">
             <button
               type="button"

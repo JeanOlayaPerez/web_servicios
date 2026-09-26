@@ -237,6 +237,42 @@ body {
   text-transform: uppercase;
   white-space: nowrap;
 }
+.header-carousel {
+  position: relative;
+  min-width: 0;
+  width: min(100%, 420px);
+  overflow: hidden;
+  border-radius: 999px;
+  border: 1px solid rgba(255,255,255,0.08);
+  background: rgba(148, 163, 184, 0.06);
+  padding: 0 12px;
+}
+.header-carousel-track {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  width: max-content;
+  min-width: 100%;
+  white-space: nowrap;
+  animation: header-scroll 18s linear infinite;
+}
+.header-carousel-item {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 14px;
+  border-radius: 999px;
+  font-size: 11px;
+  color: var(--fg);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.05);
+}
+@keyframes header-scroll {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
 .status-chip {
   display: inline-flex;
   align-items: center;
