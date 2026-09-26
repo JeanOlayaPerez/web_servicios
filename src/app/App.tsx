@@ -104,53 +104,62 @@ export default function App() {
             <span className="rail-dot dot-a" />
             <span className="rail-dot dot-b" />
           </span>
-          <Link to="/" className="ui-brand" aria-label="Ir al inicio">
-            <span className="icon-home" aria-hidden>
-              <svg viewBox="0 0 24 24" role="presentation" focusable="false">
-                <path
-                  d="M4 10.5 12 4l8 6.5V20a1 1 0 0 1-1 1h-4.5a1 1 0 0 1-1-1v-4.8h-3V20a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-9.5Z"
-                  fill="currentColor"
-                />
-              </svg>
-            </span>
-            <span>Jean Dev</span>
-          </Link>
-          <HeaderStatus />
-          <HeaderCarousel />
-          <div className="ui-nav-shell">
-            <button
-              type="button"
-              className="ui-nav-arrow prev"
-              aria-label="Desplazar navegacion a la izquierda"
-              onClick={() => handleNavScroll('prev')}
-            >
-              <span aria-hidden="true">{'<'}</span>
-            </button>
-            <nav className="ui-nav" aria-label="Navegacion principal" ref={navTrackRef}>
-              <NavLink to="/stack" className={({ isActive }) => `ui-nav-link${isActive ? ' active' : ''}`}>
-                Stack tecnologico
-              </NavLink>
-              <NavLink to="/servicios" className={({ isActive }) => `ui-nav-link${isActive ? ' active' : ''}`}>
-                Servicios
-              </NavLink>
-              <NavLink to="/destacados" className={({ isActive }) => `ui-nav-link${isActive ? ' active' : ''}`}>
-                Proyectos destacados
-              </NavLink>
-              <NavLink to="/clientes" className={({ isActive }) => `ui-nav-link${isActive ? ' active' : ''}`}>
-                Clientes
-              </NavLink>
-            </nav>
-            <button
-              type="button"
-              className="ui-nav-arrow next"
-              aria-label="Desplazar navegacion a la derecha"
-              onClick={() => handleNavScroll('next')}
-            >
-              <span aria-hidden="true">{'>'}</span>
-            </button>
+
+          <div className="ui-topbar">
+            <Link to="/" className="ui-brand" aria-label="Ir al inicio">
+              <span className="icon-home" aria-hidden>
+                <svg viewBox="0 0 24 24" role="presentation" focusable="false">
+                  <path
+                    d="M4 10.5 12 4l8 6.5V20a1 1 0 0 1-1 1h-4.5a1 1 0 0 1-1-1v-4.8h-3V20a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-9.5Z"
+                    fill="currentColor"
+                  />
+                </svg>
+              </span>
+              <span>Jean Dev</span>
+            </Link>
+
+            <HeaderStatus />
+
+            <div className="ui-controls">
+              <ThemeToggle />
+            </div>
           </div>
-          <div className="ui-controls">
-            <ThemeToggle />
+
+          <div className="ui-nav-row">
+            <HeaderCarousel />
+
+            <div className="ui-nav-shell">
+              <button
+                type="button"
+                className="ui-nav-arrow prev"
+                aria-label="Desplazar navegacion a la izquierda"
+                onClick={() => handleNavScroll('prev')}
+              >
+                <span aria-hidden="true">{'<'}</span>
+              </button>
+              <nav className="ui-nav" aria-label="Navegacion principal" ref={navTrackRef}>
+                <NavLink to="/stack" className={({ isActive }) => `ui-nav-link${isActive ? ' active' : ''}`}>
+                  Stack tecnologico
+                </NavLink>
+                <NavLink to="/servicios" className={({ isActive }) => `ui-nav-link${isActive ? ' active' : ''}`}>
+                  Servicios
+                </NavLink>
+                <NavLink to="/destacados" className={({ isActive }) => `ui-nav-link${isActive ? ' active' : ''}`}>
+                  Proyectos destacados
+                </NavLink>
+                <NavLink to="/clientes" className={({ isActive }) => `ui-nav-link${isActive ? ' active' : ''}`}>
+                  Clientes
+                </NavLink>
+              </nav>
+              <button
+                type="button"
+                className="ui-nav-arrow next"
+                aria-label="Desplazar navegacion a la derecha"
+                onClick={() => handleNavScroll('next')}
+              >
+                <span aria-hidden="true">{'>'}</span>
+              </button>
+            </div>
           </div>
         </div>
         <NavDots />
