@@ -3,7 +3,7 @@ import { projects } from './data'
 
 export default function ProjectDetail() {
   const { slug } = useParams()
-  const p = projects.find(p => p.slug === slug)
+  const p = projects.find((project) => project.slug === slug)
 
   if (!p) {
     return (
@@ -33,13 +33,20 @@ export default function ProjectDetail() {
           aria-hidden
         />
         <div className="tags" style={{ marginBottom: 16 }}>
-          {p.tags.map(t => <span key={t}>{t}</span>)}
+          {p.tags.map((tag) => <span key={tag}>{tag}</span>)}
         </div>
-        <p>Descripción larga del proyecto, objetivos, stack, retos y aprendizajes. Aquí puedes enlazar al repositorio y a una demo.</p>
+
+        <p>{p.description}</p>
+
         <div style={{ marginTop: 16, display: 'flex', gap: 8, flexWrap: 'wrap' }}>
           {p.demoUrl && (
             <a className="btn ghost" href={p.demoUrl} target="_blank" rel="noreferrer noopener">
               Abrir proyecto online
+            </a>
+          )}
+          {p.repoUrl && (
+            <a className="btn ghost" href={p.repoUrl} target="_blank" rel="noreferrer noopener">
+              Ver repositorio
             </a>
           )}
           <Link className="btn" to="/">Volver al portafolio</Link>
