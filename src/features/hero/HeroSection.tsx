@@ -170,7 +170,7 @@ export default function HeroSection() {
           initial="hidden"
           animate="visible"
         >
-          Analista Programador Computacional
+          Desarrollo web y sistemas digitales para empresas que quieren vender más y operar mejor.
         </motion.p>
 
         <motion.div
@@ -201,7 +201,7 @@ export default function HeroSection() {
             href="/servicios"
             onClick={handleNavToServices}
           >
-            Mis servicios
+            Solicitar presupuesto
           </motion.a>
         </motion.div>
       </div>

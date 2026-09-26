@@ -52,7 +52,7 @@ export default function ContactSection() {
           viewport={{ once: true }}
           transition={{ duration: 0.5, delay: 0.1 }}
         >
-          Cuéntame qué necesitas. Respondo pronto.
+          Si tu empresa necesita más ventas, mejor presencia digital o un sistema que ahorre tiempo, te ayudo a diseñarlo y construirlo.
         </motion.p>
 
         <AnimatePresence mode="wait">
@@ -113,9 +113,12 @@ export default function ContactSection() {
                   whileHover={{ scale: 1.04 }}
                   whileTap={{ scale: 0.97 }}
                 >
-                  Enviar
+                  Solicitar presupuesto
                 </motion.button>
-                <a className="btn ghost" href="mailto:jan.perez@example.com">O envíame un correo</a>
+                <a className="btn ghost" href="https://wa.me/56987654321?text=Hola%20Jean,%20quiero%20cotizar%20un%20proyecto%20digital%20para%20mi%20empresa." target="_blank" rel="noreferrer noopener">
+                  Chatear por WhatsApp
+                </a>
+                <a className="btn ghost" href="mailto:hola@jean.dev">O envíame un correo</a>
               </div>
             </motion.form>
           ) : (

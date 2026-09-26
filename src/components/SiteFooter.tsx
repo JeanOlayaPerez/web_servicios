@@ -3,8 +3,8 @@ import { Link } from 'react-router-dom'
 const currentYear = new Date().getFullYear()
 
 const socialLinks = [
-  { label: 'LinkedIn', href: 'https://www.linkedin.com/in/jeanperez', slug: 'linkedin' },
-  { label: 'GitHub', href: 'https://github.com/jeanperez', slug: 'github' },
+  { label: 'GitHub', href: 'https://github.com/JeanOlayaPerez', slug: 'github' },
+  { label: 'LinkedIn', href: 'https://www.linkedin.com/in/jean-olaya-perez', slug: 'linkedin' },
   { label: 'Behance', href: 'https://www.behance.net/', slug: 'behance' }
 ]
 
@@ -16,10 +16,10 @@ export default function SiteFooter() {
       </div>
       <div className="content footer-shell">
         <div className="footer-brand">
-          <span className="badge">Jean Dev Studio</span>
+          <span className="badge">Jean Olaya Pérez</span>
           <p>
-            Desarrollo de productos digitales de alto impacto. Diseño centrado en negocio, performance y experiencias
-            memorables.
+            Desarrollo de productos digitales para empresas. Webs, sistemas y automatizaciones que hacen crecer tu negocio,
+            mejoran la operación y aumentan ventas.
           </p>
         </div>
         <div className="footer-grid">
@@ -27,8 +27,8 @@ export default function SiteFooter() {
             <h3>Contacto directo</h3>
             <ul>
               <li><a href="mailto:hola@jean.dev">hola@jean.dev</a></li>
-              <li><a href="tel:+56987654321">+56 9 8765 4321</a></li>
-              <li>Providencia, Santiago de Chile</li>
+              <li><a href="https://wa.me/56987654321?text=Hola%20Jean,%20quiero%20cotizar%20un%20proyecto%20digital%20para%20mi%20empresa." target="_blank" rel="noreferrer noopener">+56 9 8765 4321</a></li>
+              <li>Santiago de Chile / remoto</li>
             </ul>
           </div>
           <div>
