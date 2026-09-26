@@ -63,7 +63,7 @@ export default function ServicesSection({ standalone = false }: Props) {
 
     // Botones CTA: efecto ripple + WhatsApp
     const whatsappUrl =
-      'https://wa.me/56912345678?text=Hola Jean, vi tu web y me interesa mejorar la presencia digital de mi negocio.'
+      'https://wa.me/56987654321?text=Hola%20Jean,%20quiero%20cotizar%20un%20proyecto%20digital%20para%20mi%20empresa.'
 
     const handleClick = (e: MouseEvent) => {
       const btn = e.currentTarget as HTMLButtonElement
@@ -137,12 +137,123 @@ export default function ServicesSection({ standalone = false }: Props) {
       </div>
       <div className="content services-shell">
         <header className="fade-up">
-          <span className="services-badge">◈ Mis servicios</span>
-          <h2 className="title-main">El sistema digital que tu negocio necesita</h2>
+          <span className="services-badge">◈ Mi propuesta</span>
+          <h2 className="title-main">Diseño, tecnología y marketing para que tu empresa venda más</h2>
           <p className="subtitle-main">
-            No solo una página web. Un sistema que trabaja mientras tú atiendes.
+            No solo una página web. Una presencia digital clara, confiable y diseñada para convertir visitas en clientes.
           </p>
         </header>
+
+        <section className="value-offer fade-up" aria-label="Propuesta de valor comercial">
+          <div className="offer-grid">
+            <article className="offer-card offer-primary">
+              <span className="offer-label">Página web para empresas</span>
+              <strong className="offer-price">Desde $220.000 CLP</strong>
+              <p>
+                Sitio listo para mostrar tu marca, explicar tus servicios y captar consultas con diseño profesional y optimizado para móviles.
+              </p>
+            </article>
+
+            <article className="offer-card">
+              <span className="offer-label">Revisión o rediseño</span>
+              <strong className="offer-price">Desde $120.000 CLP</strong>
+              <p>
+                Mejoras visuales, contenido, estructura, SEO básico, CTA, formulario y optimización para que la página funcione como una herramienta de ventas.
+              </p>
+            </article>
+
+            <article className="offer-card">
+              <span className="offer-label">Google Maps + presencia local</span>
+              <strong className="offer-price">Desde $90.000 CLP</strong>
+              <p>
+                Perfil optimizado, fotos, horarios, servicios, reseñas y estructura para aparecer mejor en búsquedas locales y generar más contacto.
+              </p>
+            </article>
+
+            <article className="offer-card">
+              <span className="offer-label">Campañas y marketing digital</span>
+              <strong className="offer-price">Desde $180.000 CLP</strong>
+              <p>
+                Estructuración de campañas, anuncios, mensajes, seguimiento y optimización para llegar a más clientes con menos fricción.
+              </p>
+            </article>
+          </div>
+        </section>
+
+        <section className="market-benchmark fade-up" aria-label="Comparativa de precios en Chile">
+          <div className="benchmark-header">
+            <span className="services-badge">Benchmark Chile</span>
+            <h3>Precio de mercado vs mi propuesta</h3>
+          </div>
+
+          <div className="benchmark-grid">
+            <article className="benchmark-card">
+              <div className="benchmark-meta">
+                <span>Landing / web básica</span>
+                <strong>Mercado: $350.000–$800.000</strong>
+              </div>
+              <div className="benchmark-compare">
+                <span>Mi tarifa</span>
+                <strong>$220.000–$380.000</strong>
+              </div>
+            </article>
+
+            <article className="benchmark-card">
+              <div className="benchmark-meta">
+                <span>Sitio institucional</span>
+                <strong>Mercado: $600.000–$1.500.000</strong>
+              </div>
+              <div className="benchmark-compare">
+                <span>Mi tarifa</span>
+                <strong>$350.000–$650.000</strong>
+              </div>
+            </article>
+
+            <article className="benchmark-card">
+              <div className="benchmark-meta">
+                <span>Catálogo / portafolio</span>
+                <strong>Mercado: $500.000–$1.200.000</strong>
+              </div>
+              <div className="benchmark-compare">
+                <span>Mi tarifa</span>
+                <strong>$300.000–$600.000</strong>
+              </div>
+            </article>
+
+            <article className="benchmark-card">
+              <div className="benchmark-meta">
+                <span>SEO / Google Maps</span>
+                <strong>Mercado: $150.000–$450.000/mes</strong>
+              </div>
+              <div className="benchmark-compare">
+                <span>Mi tarifa</span>
+                <strong>$90.000–$220.000/mes</strong>
+              </div>
+            </article>
+
+            <article className="benchmark-card">
+              <div className="benchmark-meta">
+                <span>Campañas de marketing</span>
+                <strong>Mercado: $200.000–$700.000/mes</strong>
+              </div>
+              <div className="benchmark-compare">
+                <span>Mi tarifa</span>
+                <strong>$180.000–$450.000/mes</strong>
+              </div>
+            </article>
+
+            <article className="benchmark-card">
+              <div className="benchmark-meta">
+                <span>Automatización WhatsApp/CRM</span>
+                <strong>Mercado: $250.000–$900.000</strong>
+              </div>
+              <div className="benchmark-compare">
+                <span>Mi tarifa</span>
+                <strong>$180.000–$550.000</strong>
+              </div>
+            </article>
+          </div>
+        </section>
 
         <div className="services-packages">
           <article className="package-card package-starter fade-up" aria-label="Plan Digital Starter">
@@ -325,9 +436,9 @@ export default function ServicesSection({ standalone = false }: Props) {
         <section className="services-secondary fade-up" aria-label="Servicios adicionales">
           <div className="services-secondary-header">
             <span className="services-badge">◈ Servicios adicionales</span>
-            <h3 className="services-secondary-title">Servicios adicionales</h3>
+            <h3 className="services-secondary-title">Marketing, presencia local y automatización que ayudan a vender</h3>
             <p className="services-secondary-subtitle">
-              Micro-servicios para complementar tu sistema digital y exprimir al máximo cada visita y cliente.
+              Todo lo que ayuda a que una empresa no solo tenga una web, sino una máquina de captación y conversión.
             </p>
           </div>
 
@@ -335,11 +446,11 @@ export default function ServicesSection({ standalone = false }: Props) {
             <article className="micro-card micro-local fade-up" aria-label="Local Radar">
               <div className="micro-bar" />
               <span className="micro-icon">📍</span>
-              <h4 className="micro-name">Local Radar</h4>
-              <p className="micro-price">$54.900 (pago único)</p>
-              <p className="micro-hook">Agencias cobran $60.000–$150.000 por esto</p>
+              <h4 className="micro-name">Google Business Profile</h4>
+              <p className="micro-price">$90.000–$180.000</p>
+              <p className="micro-hook">Incluye optimización del perfil y estructura local</p>
               <p className="micro-desc">
-                Configuración completa de Google Business: fotos, descripción, horarios y posicionamiento local.
+                Configuración, fotos, descripción, horarios, servicios, preguntas frecuentes, mapeo de búsquedas locales y mejoras para aparecer más en Google Maps.
               </p>
             </article>
 
@@ -347,45 +458,45 @@ export default function ServicesSection({ standalone = false }: Props) {
               <div className="micro-bar" />
               <span className="micro-icon">⭐</span>
               <h4 className="micro-name">Review Boost</h4>
-              <p className="micro-price">$44.900 setup</p>
+              <p className="micro-price">$49.900 setup</p>
               <p className="micro-monthly">+ $29.900/mes</p>
-              <p className="micro-hook">Valor de mercado: $80.000 setup + $40.000/mes</p>
+              <p className="micro-hook">Más reseñas = más confianza y más leads</p>
               <p className="micro-desc">
-                WhatsApp automático post-servicio que pide reseña en Google. Más reseñas = más clientes nuevos.
+                Mensajes automáticos para pedir reseñas en Google o WhatsApp. Mejora reputación y posicionamiento local sin depender solo de la suerte.
               </p>
             </article>
 
             <article className="micro-card micro-zero-calls fade-up" aria-label="Zero Calls">
               <div className="micro-bar" />
               <span className="micro-icon">📅</span>
-              <h4 className="micro-name">Zero Calls</h4>
-              <p className="micro-price">$59.900 setup</p>
+              <h4 className="micro-name">Reservas online</h4>
+              <p className="micro-price">$69.900 setup</p>
               <p className="micro-monthly">+ $29.900/mes</p>
-              <p className="micro-hook">Agencias cobran desde $80.000 + $40.000/mes</p>
+              <p className="micro-hook">Agendas 24/7 sin perder clientes</p>
               <p className="micro-desc">
-                Reservas online 24/7 integradas en tu web. El cliente agenda solo, tú recibes la notificación.
+                Sistema para agendar citas, servicios o presupuestos desde la web con notificación automática por WhatsApp o correo.
               </p>
             </article>
 
             <article className="micro-card micro-reactivation fade-up" aria-label="Reactivation">
               <div className="micro-bar" />
               <span className="micro-icon">📣</span>
-              <h4 className="micro-name">Reactivation</h4>
-              <p className="micro-price">$34.900 por campaña</p>
-              <p className="micro-hook">Precio típico en el mercado: $40.000–$80.000</p>
+              <h4 className="micro-name">Campaña de reactivación</h4>
+              <p className="micro-price">$39.900–$79.900</p>
+              <p className="micro-hook">Recupera clientes dormidos</p>
               <p className="micro-desc">
-                Campaña de WhatsApp a clientes que hace tiempo no visitan. Recupera ventas sin publicidad.
+                Mensajes dirigidos para volver a contactarlos, recordar promociones y recuperar ventas sin depender de una campaña gigante.
               </p>
             </article>
 
             <article className="micro-card micro-visibility fade-up" aria-label="Visibility Report">
               <div className="micro-bar" />
               <span className="micro-icon">📊</span>
-              <h4 className="micro-name">Visibility Report</h4>
+              <h4 className="micro-name">SEO y reporte mensual</h4>
               <p className="micro-monthly">$39.900/mes</p>
-              <p className="micro-hook">Incluido en planes SEO de $500.000+/mes</p>
+              <p className="micro-hook">Visibilidad + medición + factibilidad</p>
               <p className="micro-desc">
-                Reporte mensual de visitas al sitio, clics en Google y reseñas obtenidas. Saber es poder.
+                Análisis de visitas, palabras clave, rendimiento local y mejoras constantes para que la inversión en web tenga resultados visibles.
               </p>
             </article>
 
@@ -394,9 +505,9 @@ export default function ServicesSection({ standalone = false }: Props) {
               <span className="micro-icon">🔗</span>
               <h4 className="micro-name">WhatsApp CTA</h4>
               <p className="micro-price">$24.900 (pago único)</p>
-              <p className="micro-hook">Rápido, directo, sin complicaciones</p>
+              <p className="micro-hook">Captación directa y más simple</p>
               <p className="micro-desc">
-                Botón flotante personalizado con mensaje prellenado según el tipo de negocio.
+                Botón flotante, mensaje prearmado y mejor conversión para contacto rápido, consultas, cotizaciones y cierre de ventas.
               </p>
             </article>
           </div>

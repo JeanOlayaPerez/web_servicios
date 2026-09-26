@@ -117,10 +117,13 @@ export default function HeroSection() {
 
   const handleScrollTo = (sectionId: string) => (e: React.MouseEvent) => {
     e.preventDefault()
-    const el = document.getElementById(sectionId)
-    if (el) {
-      el.scrollIntoView({ behavior: 'smooth', block: 'start' })
-    }
+    const viewport = document.querySelector('main.viewport') as HTMLElement | null
+    const target = document.getElementById(sectionId)
+
+    if (!viewport || !target) return
+
+    const top = Math.max(0, target.offsetTop - 18)
+    viewport.scrollTo({ top, behavior: 'smooth' })
   }
 
   const handleNavToServices = (e: React.MouseEvent) => {
