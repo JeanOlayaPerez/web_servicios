@@ -1160,3 +1160,178 @@ html:not(.is-night) .input::placeholder, html:not(.is-night) .textarea::placehol
   }
 }
 
+/* ─────────────────────────────────────────────
+   SCROLL PROGRESS BAR
+───────────────────────────────────────────── */
+.scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  z-index: 9999;
+  pointer-events: none;
+}
+.scroll-progress-bar {
+  height: 100%;
+  background: linear-gradient(90deg, var(--accent), color-mix(in oklab, var(--accent), #fff 30%));
+  box-shadow: 0 0 12px color-mix(in oklab, var(--accent), transparent 30%);
+  transition: width 0.12s linear;
+  border-radius: 0 2px 2px 0;
+  will-change: width;
+}
+
+/* ─────────────────────────────────────────────
+   HERO: 3er boton — Mis servicios
+───────────────────────────────────────────── */
+.hero-services-btn {
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.22);
+  backdrop-filter: saturate(130%) blur(8px);
+  color: var(--fg);
+  font-weight: 600;
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+}
+.hero-services-btn::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(135deg, var(--accent), color-mix(in oklab, var(--accent), white 20%));
+  opacity: 0;
+  transition: opacity 0.25s ease;
+}
+.hero-services-btn:hover { color: #0a1020; border-color: transparent; }
+.hero-services-btn:hover::after { opacity: 1; }
+
+/* ─────────────────────────────────────────────
+   CONTACT SUCCESS STATE
+───────────────────────────────────────────── */
+.contact-success {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  padding: 32px 20px;
+}
+.contact-success-icon {
+  font-size: 52px;
+  filter: drop-shadow(0 0 24px rgba(120,227,255,0.5));
+}
+
+/* ─────────────────────────────────────────────
+   NAV-DOTS: spring-like width transition
+───────────────────────────────────────────── */
+.nav-dots .dot {
+  transition:
+    transform 0.25s cubic-bezier(0.34,1.56,0.64,1),
+    background 0.22s ease,
+    border-color 0.22s ease,
+    width 0.3s cubic-bezier(0.34,1.56,0.64,1);
+}
+.nav-dots .dot.active {
+  width: 24px;
+  border-radius: 999px;
+}
+
+/* ─────────────────────────────────────────────
+   CAROUSEL: overflow + no duplicate fade
+───────────────────────────────────────────── */
+.carousel-stage { overflow: hidden; }
+.carousel-slide.fade-in { animation: none; }
+
+/* ─────────────────────────────────────────────
+   PACKAGE CARDS: smooth 3D tilt
+───────────────────────────────────────────── */
+.package-card {
+  will-change: transform;
+  transition: transform 0.4s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* ─────────────────────────────────────────────
+   BUTTONS: subtle hover lift + press
+───────────────────────────────────────────── */
+.btn { transition: transform 0.15s ease, background 0.25s ease, border-color 0.25s ease, color 0.18s ease; }
+.btn:hover { transform: translateY(-2px); }
+.btn:active { transform: translateY(0) scale(0.98); }
+
+/* ─────────────────────────────────────────────
+   PACKAGE CTA: shine sweep
+───────────────────────────────────────────── */
+.package-cta {
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.18s ease, filter 0.18s ease;
+}
+.package-cta::after {
+  content: '';
+  position: absolute;
+  top: 0; left: -120%;
+  width: 70%;
+  height: 100%;
+  background: linear-gradient(120deg, transparent 30%, rgba(255,255,255,0.26) 50%, transparent 70%);
+  transition: left 0.5s ease;
+  pointer-events: none;
+}
+.package-cta:hover { transform: scale(1.03); filter: brightness(1.12); }
+.package-cta:hover::after { left: 160%; }
+
+/* ─────────────────────────────────────────────
+   MICRO-CARDS: spring lift
+───────────────────────────────────────────── */
+.micro-card {
+  transition:
+    transform 0.28s cubic-bezier(0.34,1.56,0.64,1),
+    border-color 0.25s ease,
+    box-shadow 0.28s ease;
+}
+.micro-card:hover { transform: translateY(-6px) scale(1.01); }
+
+/* ─────────────────────────────────────────────
+   CLIENT CARD: spring lift
+───────────────────────────────────────────── */
+.client-card {
+  transition:
+    transform 0.28s cubic-bezier(0.34,1.56,0.64,1),
+    border-color 0.25s ease,
+    background 0.25s ease;
+}
+.client-card:hover { transform: translateY(-6px) scale(1.008); }
+
+/* ─────────────────────────────────────────────
+   CARD (proyectos): spring scale lift
+───────────────────────────────────────────── */
+.card {
+  transition:
+    transform 0.26s cubic-bezier(0.34,1.56,0.64,1),
+    background 0.25s ease,
+    border-color 0.25s ease;
+}
+.card:hover { transform: translateY(-4px) scale(1.012); }
+
+/* ─────────────────────────────────────────────
+   UI-NAV-LINK: underline expands from center
+───────────────────────────────────────────── */
+.ui-nav-link::after { transform-origin: center; }
+
+/* ─────────────────────────────────────────────
+   SKILL BAR: smooth spring fill
+───────────────────────────────────────────── */
+.skill-bar { transition: width 1.1s cubic-bezier(0.22,0.8,0.24,1) !important; }
+
+/* ─────────────────────────────────────────────
+   REDUCED MOTION: user preference override
+───────────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  .scroll-progress-bar,
+  .hero-services-btn::after,
+  .package-cta::after { transition: none !important; }
+  .micro-card,
+  .client-card,
+  .card,
+  .btn { transform: none !important; transition: none !important; }
+}
+
+

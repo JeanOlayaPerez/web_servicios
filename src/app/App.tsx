@@ -1,11 +1,14 @@
 import { useRef } from 'react'
+import { AnimatePresence } from 'framer-motion'
+import { Link, NavLink, Route, Routes, useLocation } from 'react-router-dom'
 import ThemeToggle from '@components/ThemeToggle'
 import NavDots from '@components/NavDots'
+import PageTransition from '@components/PageTransition'
+import ScrollProgressBar from '@components/ScrollProgressBar'
 import { ThemeProvider } from '@app/theme'
 import HeroSection from '@features/hero/HeroSection'
 import ProjectsSection from '@features/projects/ProjectsSection'
 import ContactSection from '@features/contact/ContactSection'
-import { Link, NavLink, Route, Routes } from 'react-router-dom'
 import ProjectDetail from '@features/projects/ProjectDetail'
 import ServicesPage from '@features/services/ServicesPage'
 import SkillsPage from '@features/skills/SkillsPage'
@@ -14,6 +17,7 @@ import ClientsPage from '@features/clients/ClientsPage'
 
 export default function App() {
   const navTrackRef = useRef<HTMLElement | null>(null)
+  const location = useLocation()
 
   const handleNavScroll = (direction: 'prev' | 'next') => {
     const node = navTrackRef.current
@@ -24,6 +28,7 @@ export default function App() {
 
   return (
     <ThemeProvider>
+      <ScrollProgressBar />
       <header className="ui" role="banner">
         <div className="ui-bar">
           <span className="ui-border-rail" aria-hidden="true">
@@ -79,23 +84,25 @@ export default function App() {
         </div>
         <NavDots />
       </header>
-      <Routes>
-        <Route
-          path="/"
-          element={
-            <main className="viewport" tabIndex={-1}>
-              <HeroSection />
-              <ProjectsSection />
-              <ContactSection />
-            </main>
-          }
-        />
-        <Route path="/proyecto/:slug" element={<ProjectDetail />} />
-        <Route path="/stack" element={<SkillsPage />} />
-        <Route path="/servicios" element={<ServicesPage />} />
-        <Route path="/destacados" element={<ProjectsPage />} />
-        <Route path="/clientes" element={<ClientsPage />} />
-      </Routes>
+      <AnimatePresence mode="wait" initial={false}>
+        <Routes location={location} key={location.pathname}>
+          <Route
+            path="/"
+            element={
+              <main className="viewport" tabIndex={-1}>
+                <HeroSection />
+                <ProjectsSection />
+                <ContactSection />
+              </main>
+            }
+          />
+          <Route path="/proyecto/:slug" element={<PageTransition><ProjectDetail /></PageTransition>} />
+          <Route path="/stack" element={<PageTransition><SkillsPage /></PageTransition>} />
+          <Route path="/servicios" element={<PageTransition><ServicesPage /></PageTransition>} />
+          <Route path="/destacados" element={<PageTransition><ProjectsPage /></PageTransition>} />
+          <Route path="/clientes" element={<PageTransition><ClientsPage /></PageTransition>} />
+        </Routes>
+      </AnimatePresence>
     </ThemeProvider>
   )
 }

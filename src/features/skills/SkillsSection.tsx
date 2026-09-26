@@ -25,12 +25,12 @@ export default function SkillsSection({ standalone = false }: Props) {
   ]
 
   const { ref, inView } = useInView<HTMLDivElement>({ threshold: 0.35 })
-  const Element = (standalone ? 'main' : 'section') as keyof JSX.IntrinsicElements
+  const Tag = (standalone ? 'main' : 'section') as 'main' | 'section'
   const ariaLabel = standalone ? 'Stack tecnológico' : 'Habilidades'
   const className = `section${standalone ? ' section-standalone skills-standalone' : ''}`
 
   return (
-    <Element id="habilidades" className={className} aria-label={ariaLabel} ref={ref as any}>
+    <Tag id="habilidades" className={className} aria-label={ariaLabel} ref={ref as any}>
       <div className="bg sky-bg">
         {/* Nubes compuestas */}
         <div className="ncloud n1" aria-hidden="true" />
@@ -68,6 +68,6 @@ export default function SkillsSection({ standalone = false }: Props) {
           ))}
         </div>
       </div>
-    </Element>
+    </Tag>
   )
 }

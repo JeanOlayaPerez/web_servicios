@@ -1,9 +1,40 @@
 import { useEffect, useRef } from 'react'
 import { motion } from 'framer-motion'
 import { useTheme } from '@app/theme'
+import { useNavigate } from 'react-router-dom'
+
+const titleVariants = {
+  hidden: { opacity: 0, y: 22 },
+  visible: {
+    opacity: 1, y: 0,
+    transition: { duration: 0.7, ease: [0.25, 0.46, 0.45, 0.94] }
+  }
+}
+
+const subtitleVariants = {
+  hidden: { opacity: 0, y: 14 },
+  visible: {
+    opacity: 1, y: 0,
+    transition: { duration: 0.6, delay: 0.18, ease: [0.25, 0.46, 0.45, 0.94] }
+  }
+}
+
+const actionsVariants = {
+  hidden: {},
+  visible: { transition: { staggerChildren: 0.12, delayChildren: 0.32 } }
+}
+
+const btnVariant = {
+  hidden: { opacity: 0, y: 10, scale: 0.96 },
+  visible: {
+    opacity: 1, y: 0, scale: 1,
+    transition: { duration: 0.45, ease: [0.34, 1.56, 0.64, 1] }
+  }
+}
 
 export default function HeroSection() {
   const starsRef = useRef<HTMLDivElement>(null)
+  const navigate = useNavigate()
 
   useEffect(() => {
     const el = starsRef.current
@@ -84,6 +115,19 @@ export default function HeroSection() {
     return () => window.clearInterval(id)
   }, [])
 
+  const handleScrollTo = (sectionId: string) => (e: React.MouseEvent) => {
+    e.preventDefault()
+    const el = document.getElementById(sectionId)
+    if (el) {
+      el.scrollIntoView({ behavior: 'smooth', block: 'start' })
+    }
+  }
+
+  const handleNavToServices = (e: React.MouseEvent) => {
+    e.preventDefault()
+    navigate('/servicios')
+  }
+
   return (
     <section id="bienvenida" className="section" aria-label="Bienvenida">
       <div className="bg space-bg">
@@ -111,15 +155,54 @@ export default function HeroSection() {
         </div>
       </div>
       <div className="content">
-        <motion.h1 className="title" initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
+        <motion.h1
+          className="title"
+          variants={titleVariants}
+          initial="hidden"
+          animate="visible"
+        >
           Hola, soy <span className="accent">Jean Pérez</span>
         </motion.h1>
-        <motion.p className="subtitle" initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.1 }}>
+
+        <motion.p
+          className="subtitle"
+          variants={subtitleVariants}
+          initial="hidden"
+          animate="visible"
+        >
           Analista Programador Computacional
         </motion.p>
-        <motion.div className="actions" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.6, delay: 0.2 }}>
-          <a className="btn cta" href="#proyectos">Ver proyectos</a>
-          <a className="btn ghost" href="#contacto">Hablemos</a>
+
+        <motion.div
+          className="actions"
+          variants={actionsVariants}
+          initial="hidden"
+          animate="visible"
+        >
+          <motion.a
+            variants={btnVariant}
+            className="btn cta"
+            href="#proyectos"
+            onClick={handleScrollTo('proyectos')}
+          >
+            Ver proyectos
+          </motion.a>
+          <motion.a
+            variants={btnVariant}
+            className="btn ghost"
+            href="#contacto"
+            onClick={handleScrollTo('contacto')}
+          >
+            Hablemos
+          </motion.a>
+          <motion.a
+            variants={btnVariant}
+            className="btn hero-services-btn"
+            href="/servicios"
+            onClick={handleNavToServices}
+          >
+            Mis servicios
+          </motion.a>
         </motion.div>
       </div>
     </section>
