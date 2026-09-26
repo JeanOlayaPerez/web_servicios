@@ -10,7 +10,7 @@ type Props = {
   autoAdvance?: boolean
 }
 
-export default function ProjectsSection({ standalone = false, heading = 'Proyectos destacados', intro, autoAdvance = false }: Props) {
+export default function ProjectsSection({ standalone = false, heading = 'Proyectos destacados', intro, autoAdvance = true }: Props) {
   const Element = (standalone ? 'main' : 'section') as keyof JSX.IntrinsicElements
   const className = `section${standalone ? ' section-standalone projects-standalone' : ''}`
   const ariaLabel = standalone ? 'Proyectos destacados' : 'Proyectos'
@@ -56,26 +56,46 @@ export default function ProjectsSection({ standalone = false, heading = 'Proyect
           <div className="pine small" />
         </div>
       </div>
-      <div className="content projects">
-        <h2 className="title">{heading}</h2>
-        {intro && <p className="subtitle">{intro}</p>}
-        <Carousel autoAdvance={autoAdvance}>
+
+      <div className="content projects-showcase">
+        <div className="projects-heading">
+          <span className="services-badge">Proyectos destacados</span>
+          <h2 className="title">{heading}</h2>
+          {intro && <p className="subtitle">{intro}</p>}
+        </div>
+
+        <Carousel autoAdvance={autoAdvance} interval={5200}>
           {projects.map((project) => (
-            <div className="carousel-item" key={project.slug}>
-              <article className="card" role="article">
-                <div
-                  className="thumb"
-                  aria-hidden
-                  style={{
-                    backgroundSize: 'cover',
-                    backgroundPosition: 'center',
-                    backgroundImage: project.image ? `url(${project.image})` : undefined
-                  }}
-                />
-                <h3 className="card-title">{project.title}</h3>
-                <p className="card-text">{project.summary}</p>
+            <article className="project-feature-card" key={project.slug} role="article">
+              <div
+                className="project-feature-media"
+                aria-hidden
+                style={{
+                  backgroundSize: 'cover',
+                  backgroundPosition: 'center',
+                  backgroundImage: project.image ? `url(${project.image})` : undefined
+                }}
+              />
+
+              <div className="project-feature-copy">
+                <span className="project-sector">{project.industry || 'Solución digital'}</span>
+                <h3>{project.title}</h3>
+                <p className="project-summary">{project.summary}</p>
+
+                <div className="project-result-row">
+                  <span className="project-impact-label">Impacto</span>
+                  <strong>{project.impact || 'Mejora visible de marca y ventas'}</strong>
+                </div>
+
+                <ul className="project-benefits">
+                  {project.benefits.map((benefit) => (
+                    <li key={benefit}>{benefit}</li>
+                  ))}
+                </ul>
+
                 <div className="tags">{project.tags.map((tag) => <span key={tag}>{tag}</span>)}</div>
-                <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap' }}>
+
+                <div className="project-cta-row">
                   <Link className="btn small" to={`/proyecto/${project.slug}`} aria-label={`Ver detalle de ${project.title}`}>
                     Ver detalle
                   </Link>
@@ -91,8 +111,8 @@ export default function ProjectsSection({ standalone = false, heading = 'Proyect
                     </a>
                   )}
                 </div>
-              </article>
-            </div>
+              </div>
+            </article>
           ))}
         </Carousel>
       </div>

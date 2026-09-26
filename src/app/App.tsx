@@ -1,4 +1,4 @@
-import { useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { AnimatePresence } from 'framer-motion'
 import { Link, NavLink, Route, Routes, useLocation } from 'react-router-dom'
 import ThemeToggle from '@components/ThemeToggle'
@@ -14,6 +14,55 @@ import ServicesPage from '@features/services/ServicesPage'
 import SkillsPage from '@features/skills/SkillsPage'
 import ProjectsPage from '@features/projects/ProjectsPage'
 import ClientsPage from '@features/clients/ClientsPage'
+
+function HeaderStatus() {
+  const [time, setTime] = useState('')
+  const [weather, setWeather] = useState('')
+
+  useEffect(() => {
+    const updateTime = () => {
+      const now = new Intl.DateTimeFormat('es-CL', {
+        timeZone: 'America/Santiago',
+        hour: '2-digit',
+        minute: '2-digit',
+        hour12: false
+      }).format(new Date())
+
+      const date = new Intl.DateTimeFormat('es-CL', {
+        timeZone: 'America/Santiago',
+        weekday: 'short',
+        day: '2-digit',
+        month: 'short'
+      }).format(new Date())
+
+      setTime(`${date} • ${now}`)
+    }
+
+    updateTime()
+    const timer = window.setInterval(updateTime, 60000)
+
+    fetch('https://api.open-meteo.com/v1/forecast?latitude=-33.45&longitude=-70.66&current=temperature_2m&timezone=auto')
+      .then((response) => response.json())
+      .then((data) => {
+        if (data?.current?.temperature_2m !== undefined) {
+          setWeather(`${Math.round(data.current.temperature_2m)}°C`)
+        }
+      })
+      .catch(() => {
+        setWeather('Santiago')
+      })
+
+    return () => window.clearInterval(timer)
+  }, [])
+
+  return (
+    <div className="header-status" aria-live="polite">
+      <span className="status-chip">Santiago</span>
+      <span>{time || 'Cargando horario'}</span>
+      {weather && <span className="status-chip subtle">{weather}</span>}
+    </div>
+  )
+}
 
 export default function App() {
   const navTrackRef = useRef<HTMLElement | null>(null)
@@ -46,6 +95,7 @@ export default function App() {
             </span>
             <span>Jean Dev</span>
           </Link>
+          <HeaderStatus />
           <div className="ui-nav-shell">
             <button
               type="button"

@@ -36,6 +36,11 @@ export default function ProjectDetail() {
           {p.tags.map((tag) => <span key={tag}>{tag}</span>)}
         </div>
 
+        {p.client && <p><strong>Cliente:</strong> {p.client}</p>}
+        {p.industry && <p><strong>Industria:</strong> {p.industry}</p>}
+        {p.impact && <p><strong>Impacto:</strong> {p.impact}</p>}
+        {p.result && <p><strong>Resultado objetivo:</strong> {p.result}</p>}
+
         <p>{p.description}</p>
 
         <div style={{ marginTop: 16, display: 'flex', gap: 8, flexWrap: 'wrap' }}>

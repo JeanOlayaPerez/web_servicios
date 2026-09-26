@@ -220,6 +220,38 @@ body {
   text-decoration: none;
   color: var(--fg);
 }
+.header-status {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  min-height: 32px;
+  padding: 6px 10px;
+  border-radius: 999px;
+  background: rgba(148, 163, 184, 0.08);
+  border: 1px solid rgba(148, 163, 184, 0.15);
+  color: var(--muted);
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+.status-chip {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4px 8px;
+  border-radius: 999px;
+  background: rgba(59, 130, 246, 0.12);
+  border: 1px solid rgba(59, 130, 246, 0.25);
+  color: color-mix(in oklab, var(--accent), #fff 18%);
+}
+.status-chip.subtle {
+  background: rgba(16, 185, 129, 0.1);
+  border-color: rgba(16, 185, 129, 0.32);
+  color: #a7f3d0;
+}
 .ui-brand span {
   background: linear-gradient(130deg, var(--accent), color-mix(in oklab, var(--accent), #ffffff 10%));
   -webkit-background-clip: text;
@@ -439,6 +471,133 @@ body {
 }
 .skills-standalone .content { max-width: 1040px; }
 .projects-standalone .content { max-width: 1080px; }
+.projects-showcase {
+  width: min(100%, 1100px);
+  max-width: 1100px;
+  background: rgba(11, 18, 32, 0.46);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 28px;
+  padding: clamp(20px, 5vw, 32px);
+  box-shadow: 0 28px 80px rgba(3, 8, 20, 0.34);
+}
+.projects-heading {
+  margin-bottom: 18px;
+  text-align: center;
+}
+.projects-heading .title {
+  margin-top: 12px;
+}
+.project-feature-card {
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
+  gap: 18px;
+  width: min(100%, 980px);
+  margin: 0 auto;
+  background: rgba(9, 15, 27, 0.72);
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 28px 60px rgba(3, 8, 20, 0.28);
+}
+.project-feature-media {
+  min-height: 350px;
+  background: linear-gradient(135deg, rgba(255,255,255,0.12), rgba(255,255,255,0.04));
+  border-right: 1px solid rgba(255,255,255,0.08);
+}
+.project-feature-copy {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: clamp(18px, 3vw, 28px);
+  text-align: left;
+}
+.project-sector {
+  display: inline-flex;
+  width: fit-content;
+  padding: 6px 10px;
+  border-radius: 999px;
+  background: rgba(120, 227, 255, 0.1);
+  border: 1px solid rgba(120, 227, 255, 0.2);
+  color: #bfefff;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.project-feature-copy h3 {
+  margin: 12px 0 10px;
+  font-size: clamp(24px, 3vw, 32px);
+  line-height: 1.1;
+}
+.project-summary {
+  margin: 0 0 16px;
+  color: var(--muted);
+  font-size: 15px;
+  line-height: 1.7;
+}
+.project-result-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 12px 14px;
+  border-radius: 12px;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.08);
+  margin-bottom: 14px;
+}
+.project-impact-label {
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.project-result-row strong {
+  font-size: 14px;
+  color: #ffffff;
+}
+.project-benefits {
+  list-style: none;
+  margin: 0 0 16px;
+  padding: 0;
+  display: grid;
+  gap: 8px;
+}
+.project-benefits li {
+  position: relative;
+  padding-left: 18px;
+  color: var(--muted);
+  line-height: 1.5;
+}
+.project-benefits li::before {
+  content: '✓';
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: var(--accent);
+  font-weight: 800;
+}
+.project-cta-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.project-feature-card .tags {
+  margin-bottom: 14px;
+}
+
+@media (max-width: 860px) {
+  .project-feature-card {
+    grid-template-columns: 1fr;
+  }
+
+  .project-feature-media {
+    min-height: 260px;
+    border-right: none;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+  }
+}
+
 .skill {
   min-width: 0;
   background: rgba(255,255,255,.06);
