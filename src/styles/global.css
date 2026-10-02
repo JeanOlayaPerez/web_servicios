@@ -699,6 +699,66 @@ body {
   margin-bottom: 14px;
 }
 
+@media (min-width: 861px) and (max-width: 1440px) {
+  #proyectos {
+    align-items: start;
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+  #proyectos .projects-showcase {
+    padding: 0 clamp(18px, 2vw, 24px);
+  }
+  #proyectos .projects-heading {
+    margin-bottom: 0;
+  }
+  #proyectos .projects-heading .title {
+    margin-top: 4px;
+    font-size: clamp(28px, 3.2vw, 36px);
+  }
+  #proyectos .project-feature-card {
+    min-height: clamp(380px, 52vh, 440px);
+  }
+  #proyectos .project-feature-media {
+    min-height: 0;
+  }
+  #proyectos .project-feature-copy {
+    padding: 20px;
+  }
+  #proyectos .project-feature-copy h3 {
+    margin: 8px 0;
+    font-size: clamp(24px, 2.4vw, 30px);
+  }
+  #proyectos .project-summary {
+    margin-bottom: 10px;
+    font-size: 14px;
+    line-height: 1.5;
+  }
+  #proyectos .project-result-row {
+    margin-bottom: 10px;
+    padding: 10px 12px;
+  }
+  #proyectos .project-result-row strong {
+    font-size: 13px;
+  }
+  #proyectos .project-benefits {
+    gap: 6px;
+    margin-bottom: 10px;
+  }
+  #proyectos .project-benefits li {
+    font-size: 13px;
+    line-height: 1.4;
+  }
+  #proyectos .project-feature-card .tags {
+    margin-bottom: 8px;
+  }
+  #proyectos .carousel-btns {
+    margin-top: 6px;
+  }
+  #proyectos .carousel-dots {
+    margin-top: 0;
+  }
+}
+
 @media (max-width: 860px) {
   .project-feature-card {
     grid-template-columns: 1fr;
