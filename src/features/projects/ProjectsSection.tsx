@@ -10,7 +10,7 @@ type Props = {
   autoAdvance?: boolean
 }
 
-export default function ProjectsSection({ standalone = false, heading = 'Proyectos destacados', intro, autoAdvance = true }: Props) {
+export default function ProjectsSection({ standalone = false, heading = 'Proyectos destacados', intro, autoAdvance = false }: Props) {
   const Element = (standalone ? 'main' : 'section') as keyof JSX.IntrinsicElements
   const className = `section${standalone ? ' section-standalone projects-standalone' : ''}`
   const ariaLabel = standalone ? 'Proyectos destacados' : 'Proyectos'
