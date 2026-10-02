@@ -69,13 +69,22 @@ export default function ProjectsSection({ standalone = false, heading = 'Proyect
             <article className="project-feature-card" key={project.slug} role="article">
               <div
                 className="project-feature-media"
-                aria-hidden
                 style={{
                   backgroundSize: 'cover',
                   backgroundPosition: 'center',
                   backgroundImage: project.image ? `url(${project.image})` : undefined
                 }}
-              />
+              >
+                {project.socialProof && (
+                  <aside className="project-proof-toast" aria-label="Opiniones de clientes">
+                    <span className="project-proof-indicator" aria-hidden="true" />
+                    <span className="project-proof-copy">
+                      <strong>{project.socialProof.title}</strong>
+                      <span>{project.socialProof.message}</span>
+                    </span>
+                  </aside>
+                )}
+              </div>
 
               <div className="project-feature-copy">
                 <span className="project-sector">{project.industry || 'Solución digital'}</span>

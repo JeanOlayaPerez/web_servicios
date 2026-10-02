@@ -11,10 +11,31 @@ export type Project = {
   industry?: string
   impact?: string
   result?: string
+  socialProof?: { title: string; message: string }
   benefits: string[]
 }
 
 export const projects: Project[] = [
+  {
+    slug: 'felipe-tatuaje',
+    title: 'Web para estudio de tatuajes',
+    summary: 'Un portafolio visual que convierte visitas en nuevas consultas y citas.',
+    description:
+      'Sitio web para un estudio de tatuajes, diseñado para mostrar el trabajo del artista, transmitir la identidad del estudio y facilitar el contacto de quienes quieren reservar una cita.',
+    tags: ['React', 'Firebase', 'CMS', 'Portafolio'],
+    image: 'https://jeolayadev.github.io/felipe_tatuaje/gallery/inke-estudio-felipe.jpg',
+    demoUrl: 'https://jeolayadev.github.io/felipe_tatuaje/',
+    repoUrl: 'https://github.com/jeolayadev/felipe_tatuaje',
+    client: 'Estudio de tatuajes',
+    industry: 'Tatuaje y arte corporal',
+    impact: 'Más visibilidad para el portafolio y un camino directo de la visita a la cita.',
+    result: 'Más oportunidades de reserva',
+    socialProof: {
+      title: 'Clientes felices',
+      message: 'Nos eligen y recomiendan. Creamos webs que también impulsan su negocio.'
+    },
+    benefits: ['Portafolio de tatuajes fácil de explorar', 'Identidad del estudio visible desde el primer vistazo', 'Contacto directo para nuevas citas']
+  },
   {
     slug: 'friosan-pagina-web',
     title: 'Landing page para empresa de logística',
@@ -65,13 +86,13 @@ export const projects: Project[] = [
   },
   {
     slug: 'friosan-logistica-local',
-    title: 'Sistema para gestión operativa logística',
-    summary: 'Sistema interno orientado a control operativo, supervisión y reporting logístico.',
+    title: 'Sistema de gestión logística para Friosan',
+    summary: 'Plataforma para centralizar la operación y el seguimiento de camiones.',
     description:
       'Dashboard y plataforma para gestión de operaciones logísticas, con reportes, control de procesos y análisis operativo para empresas que necesitan mayor visibility del negocio. La solución está enfocada en mejorar la toma de decisiones y la eficiencia del equipo.',
     tags: ['React', 'Firebase', 'Dashboard', 'Operaciones'],
     image: 'https://images.unsplash.com/photo-1553413077-190dd305871c?q=80&w=1200&auto=format&fit=crop',
-    demoUrl: 'https://pryecto-friosan-logistica-local.vercel.app/',
+    demoUrl: 'https://friosancrm.vercel.app/login',
     repoUrl: 'https://github.com/JeanOlayaPerez/pryecto-friosan-logistica-local',
     client: 'Operación logística',
     industry: 'Gestión operativa',
@@ -79,19 +100,4 @@ export const projects: Project[] = [
     result: '+ eficiencia operacional',
     benefits: ['Panel de gestión', 'Reporte de desempeño', 'Control de procesos críticos']
   },
-  {
-    slug: 'felipe-tatuaje',
-    title: 'Landing page para estudio de tatuaje',
-    summary: 'Portafolio de arte y estudio con identidad visual fuerte y contenido escalable.',
-    description:
-      'Landing page para un estudio de tatuaje con estética premium, portafolio visual y diferenciación emocional. Está enfocada a mostrar trabajo, reforzar la identidad del estudio y convertir interés en clientes.',
-    tags: ['React', 'Firebase', 'CMS', 'Portafolio'],
-    image: 'https://images.unsplash.com/photo-1515377905703-c4788e51af15?q=80&w=1200&auto=format&fit=crop',
-    repoUrl: 'https://github.com/jeolayadev/felipe_tatuaje',
-    client: 'Estudio de tatuaje',
-    industry: 'Arte y marca personal',
-    impact: 'Eleva la marca personal y facilita la conversión de interesados a clientes.',
-    result: '+ presencia profesional',
-    benefits: ['Portfolio visual', 'Contenido escalable', 'Identidad fuerte']
-  }
 ]

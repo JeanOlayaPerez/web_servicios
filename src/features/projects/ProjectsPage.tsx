@@ -8,7 +8,7 @@ export default function ProjectsPage() {
         standalone
         heading="Proyectos destacados"
         intro="Casos reales que demuestran cómo transformo ideas en productos digitales listos para operar."
-        autoAdvance
+        autoAdvance={false}
       />
       <SiteFooter />
     </>

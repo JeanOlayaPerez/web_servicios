@@ -1,4 +1,5 @@
 import { useEffect, useRef } from 'react'
+import { projects } from '../projects/data'
 
 type Props = {
   standalone?: boolean
@@ -6,6 +7,7 @@ type Props = {
 
 export default function ServicesSection({ standalone = false }: Props) {
   const sectionRef = useRef<HTMLElement | null>(null)
+  const tattooProject = projects.find((project) => project.slug === 'felipe-tatuaje')
 
   useEffect(() => {
     const node = sectionRef.current
@@ -62,8 +64,7 @@ export default function ServicesSection({ standalone = false }: Props) {
     })
 
     // Botones CTA: efecto ripple + WhatsApp
-    const whatsappUrl =
-      'https://wa.me/56987654321?text=Hola%20Jean,%20quiero%20cotizar%20un%20proyecto%20digital%20para%20mi%20empresa.'
+    const whatsappBaseUrl = 'https://wa.me/56987654321?text='
 
     const handleClick = (e: MouseEvent) => {
       const btn = e.currentTarget as HTMLButtonElement
@@ -86,7 +87,11 @@ export default function ServicesSection({ standalone = false }: Props) {
       btn.appendChild(ripple)
       window.setTimeout(() => ripple.remove(), 600)
 
-      window.open(whatsappUrl, '_blank')
+      const plan = btn.dataset.plan
+      const message = plan
+        ? `Hola Jean, me interesa el plan ${plan}. ¿Podemos conversar sobre mi proyecto?`
+        : 'Hola Jean, quiero cotizar un proyecto digital para mi empresa.'
+      window.open(`${whatsappBaseUrl}${encodeURIComponent(message)}`, '_blank')
     }
 
     buttons.forEach((btn) => {
@@ -136,15 +141,47 @@ export default function ServicesSection({ standalone = false }: Props) {
         </div>
       </div>
       <div className="content services-shell">
-        <header className="fade-up">
-          <span className="services-badge">◈ Mi propuesta</span>
-          <h2 className="title-main">Diseño, tecnología y marketing para que tu empresa venda más</h2>
-          <p className="subtitle-main">
-            No solo una página web. Una presencia digital clara, confiable y diseñada para convertir visitas en clientes.
-          </p>
+        <header className="services-hero fade-up">
+          <div className="services-hero-copy">
+            <span className="services-badge">Web · sistemas · crecimiento</span>
+            <h1 className="title-main">Tu negocio necesita una presencia digital que trabaje por él.</h1>
+            <p className="subtitle-main">
+              Diseño y desarrollo herramientas digitales claras, rápidas y pensadas para atraer clientes y simplificar tu operación.
+            </p>
+            <div className="services-hero-actions">
+              <a className="btn" href="#planes">Explorar planes</a>
+              <a
+                className="btn ghost"
+                href="https://wa.me/56987654321?text=Hola%20Jean%2C%20quiero%20conversar%20sobre%20mi%20proyecto%20digital."
+                target="_blank"
+                rel="noreferrer noopener"
+              >
+                Hablemos de tu proyecto
+              </a>
+            </div>
+            <div className="services-trust-row" aria-label="Enfoque de trabajo">
+              <span>Diseño a medida</span>
+              <span>Optimizado para móvil</span>
+              <span>Contacto directo</span>
+            </div>
+          </div>
+          {tattooProject?.image && (
+            <figure className="services-hero-visual">
+              <img src={tattooProject.image} alt="Felipe tatuando en el estudio INKEPILEF" />
+              <figcaption>
+                <span>Proyecto real</span>
+                <strong>INKEPILEF · Estudio de tatuajes</strong>
+                <a href={tattooProject.demoUrl} target="_blank" rel="noreferrer noopener">Ver sitio</a>
+              </figcaption>
+            </figure>
+          )}
         </header>
 
         <section className="value-offer fade-up" aria-label="Propuesta de valor comercial">
+          <div className="services-block-heading">
+            <span className="services-eyebrow">Soluciones para cada etapa</span>
+            <h2>¿Qué necesita tu negocio hoy?</h2>
+          </div>
           <div className="offer-grid">
             <article className="offer-card offer-primary">
               <span className="offer-label">Página web para empresas</span>
@@ -180,82 +217,13 @@ export default function ServicesSection({ standalone = false }: Props) {
           </div>
         </section>
 
-        <section className="market-benchmark fade-up" aria-label="Comparativa de precios en Chile">
-          <div className="benchmark-header">
-            <span className="services-badge">Benchmark Chile</span>
-            <h3>Precio de mercado vs mi propuesta</h3>
+        <section id="planes" className="services-plans" aria-label="Planes de servicios digitales">
+          <div className="services-block-heading">
+            <span className="services-eyebrow">Inversión transparente</span>
+            <h2>Elige el punto de partida</h2>
+            <p>Alcance y mensualidad definidos desde el inicio. Si necesitas algo distinto, lo cotizamos a medida.</p>
           </div>
-
-          <div className="benchmark-grid">
-            <article className="benchmark-card">
-              <div className="benchmark-meta">
-                <span>Landing / web básica</span>
-                <strong>Mercado: $350.000–$800.000</strong>
-              </div>
-              <div className="benchmark-compare">
-                <span>Mi tarifa</span>
-                <strong>$220.000–$380.000</strong>
-              </div>
-            </article>
-
-            <article className="benchmark-card">
-              <div className="benchmark-meta">
-                <span>Sitio institucional</span>
-                <strong>Mercado: $600.000–$1.500.000</strong>
-              </div>
-              <div className="benchmark-compare">
-                <span>Mi tarifa</span>
-                <strong>$350.000–$650.000</strong>
-              </div>
-            </article>
-
-            <article className="benchmark-card">
-              <div className="benchmark-meta">
-                <span>Catálogo / portafolio</span>
-                <strong>Mercado: $500.000–$1.200.000</strong>
-              </div>
-              <div className="benchmark-compare">
-                <span>Mi tarifa</span>
-                <strong>$300.000–$600.000</strong>
-              </div>
-            </article>
-
-            <article className="benchmark-card">
-              <div className="benchmark-meta">
-                <span>SEO / Google Maps</span>
-                <strong>Mercado: $150.000–$450.000/mes</strong>
-              </div>
-              <div className="benchmark-compare">
-                <span>Mi tarifa</span>
-                <strong>$90.000–$220.000/mes</strong>
-              </div>
-            </article>
-
-            <article className="benchmark-card">
-              <div className="benchmark-meta">
-                <span>Campañas de marketing</span>
-                <strong>Mercado: $200.000–$700.000/mes</strong>
-              </div>
-              <div className="benchmark-compare">
-                <span>Mi tarifa</span>
-                <strong>$180.000–$450.000/mes</strong>
-              </div>
-            </article>
-
-            <article className="benchmark-card">
-              <div className="benchmark-meta">
-                <span>Automatización WhatsApp/CRM</span>
-                <strong>Mercado: $250.000–$900.000</strong>
-              </div>
-              <div className="benchmark-compare">
-                <span>Mi tarifa</span>
-                <strong>$180.000–$550.000</strong>
-              </div>
-            </article>
-          </div>
-        </section>
-
-        <div className="services-packages">
+          <div className="services-packages">
           <article className="package-card package-starter fade-up" aria-label="Plan Digital Starter">
             <div className="package-accent">⚡ DIGITAL STARTER</div>
             <h3>Presencia digital lista para partir</h3>
@@ -306,7 +274,7 @@ export default function ServicesSection({ standalone = false }: Props) {
               </li>
             </ul>
 
-            <button type="button" className="package-cta">
+            <button type="button" className="package-cta" data-plan="Digital Starter">
               Quiero este plan
             </button>
           </article>
@@ -366,7 +334,7 @@ export default function ServicesSection({ standalone = false }: Props) {
               </li>
             </ul>
 
-            <button type="button" className="package-cta">
+            <button type="button" className="package-cta" data-plan="Growth System">
               Quiero este plan
             </button>
           </article>
@@ -427,11 +395,12 @@ export default function ServicesSection({ standalone = false }: Props) {
               </li>
             </ul>
 
-            <button type="button" className="package-cta">
+            <button type="button" className="package-cta" data-plan="Smart Business">
               Quiero este plan
             </button>
           </article>
-        </div>
+          </div>
+        </section>
 
         <section className="services-secondary fade-up" aria-label="Servicios adicionales">
           <div className="services-secondary-header">
@@ -511,6 +480,35 @@ export default function ServicesSection({ standalone = false }: Props) {
               </p>
             </article>
           </div>
+        </section>
+
+        <section className="services-process fade-up" aria-labelledby="services-process-title">
+          <div className="services-block-heading">
+            <span className="services-eyebrow">Un proceso simple</span>
+            <h2 id="services-process-title">De la idea al lanzamiento, con claridad</h2>
+          </div>
+          <div className="services-process-grid">
+            <article><span>01</span><h3>Entendemos el negocio</h3><p>Conversamos sobre tus objetivos, clientes y los procesos que quieres mejorar.</p></article>
+            <article><span>02</span><h3>Definimos el alcance</h3><p>Recibes una propuesta con entregables, plazos y costos antes de comenzar.</p></article>
+            <article><span>03</span><h3>Construimos y lanzamos</h3><p>Desarrollo, revisión contigo y publicación con acompañamiento para el inicio.</p></article>
+          </div>
+        </section>
+
+        <section className="services-faq fade-up" aria-labelledby="services-faq-title">
+          <div className="services-block-heading">
+            <span className="services-eyebrow">Antes de empezar</span>
+            <h2 id="services-faq-title">Preguntas frecuentes</h2>
+          </div>
+          <div className="services-faq-list">
+            <details><summary>¿El precio publicado es el valor final?</summary><p>Es el valor del alcance descrito en cada plan. Integraciones o funciones adicionales se detallan y cotizan antes de iniciar.</p></details>
+            <details><summary>¿Cuánto tarda en estar listo?</summary><p>El plazo depende del alcance y de la entrega de contenidos. Lo acordamos por escrito en la propuesta antes de comenzar.</p></details>
+            <details><summary>¿Puedo pedir solo una cotización?</summary><p>Sí. Cuéntame qué necesita tu negocio y te propongo el alcance más conveniente, sin compromiso de contratar.</p></details>
+          </div>
+        </section>
+
+        <section className="services-final-cta" aria-label="Contacto">
+          <div><span className="services-eyebrow">¿Lo conversamos?</span><h2>Cuéntame qué quieres mejorar en tu negocio.</h2></div>
+          <a className="btn" href="https://wa.me/56987654321?text=Hola%20Jean%2C%20quiero%20conversar%20sobre%20mi%20proyecto%20digital." target="_blank" rel="noreferrer noopener">Escribir por WhatsApp</a>
         </section>
       </div>
     </>
